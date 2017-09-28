@@ -26,7 +26,7 @@ The goal of your project is to predict the manner in which they did the exercise
 The seed will be set to 12345 for all code. If the same seed is used, it will reproduce the below data.  
 
 ###How the model was built
-The outcome variable is classe, a 5-level factor variable. They correspond to five different activities:  
+The outcome variable is classe, a 5-level factor variable. They correspond to five different excersize activities:  
 
 * A: exactly according to the specification
 
@@ -38,7 +38,7 @@ The outcome variable is classe, a 5-level factor variable. They correspond to fi
 
 * E: throwing the hips to the front
 
-Class A is the correct version of the exercise, while the other 4 are common mistakes. Three models, Decision Trees, Randoms Forests, and Neural Network, will be utilized, and will be evaluated based on maximizing accuracy/minimizing out-of-sample error. All other variables not removed by cleaning will be used for prediction.  
+Class A is the correct version of the exercise, while the other 4 are common mistakes. Three models, Decision Trees, Randoms Forests, and Neural Network will be utilized, and will be evaluated based on maximizing accuracy/minimizing out-of-sample error. All other variables not removed by cleaning will be used for prediction.  
 
 ###Cross-validation
 Cross-validation will be performed by separating the train data set into two parts: trainTrain (60%) and trainTest (40%). Our models will be fitted on the trainTrain data, and tested on the trainTest data. Once the most accurate model is found, it will be tested on the original test data set.
@@ -65,7 +65,7 @@ dateDowloaded
 ```
 
 ```
-## [1] "Wed Sep 27 23:30:18 2017"
+## [1] "Wed Sep 27 23:32:16 2017"
 ```
 
 ```r
@@ -192,8 +192,29 @@ Now that these have been generated, we can look at the accuracy values in the co
 
 ```r
 confusionMatrix(predictDC, trainTest$classe)$overall['Accuracy']
+```
+
+```
+##  Accuracy 
+## 0.7267397
+```
+
+```r
 confusionMatrix(predictRF, trainTest$classe)$overall['Accuracy']
+```
+
+```
+##  Accuracy 
+## 0.9927352
+```
+
+```r
 confusionMatrix(predictNN, trainTest$classe)$overall['Accuracy']
+```
+
+```
+##  Accuracy 
+## 0.4432832
 ```
 The best accuracy is Random Forests, with a whopping 99%. Needless to say, we will be applying that to our test dataset.  
 
@@ -206,6 +227,11 @@ predictTest <- predict(modelRF, test)
 predictTest
 ```
 
+```
+##  [1] B A B A A E D B A A B C B A E E A B B B
+## Levels: A B C D E
+```
+
 ******
 ##Appendix
 ###Decision Tree Plot
@@ -214,3 +240,5 @@ Just because it looks cool.
 ```r
 rpart.plot(modelDC, main="Decision Tree", extra=102, under=TRUE, faclen=0)
 ```
+
+![](MachineLearningProjectCode_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
