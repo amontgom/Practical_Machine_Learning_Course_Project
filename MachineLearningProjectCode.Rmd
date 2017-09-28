@@ -2,11 +2,12 @@
 title: "MachineLearningProject"
 author: "Aaron Taylor"
 date: "September 27, 2017"
-output: html_document
+output:
+  md_document:
+    variant: markdown_github
 ---
 
 ******
-http://rpubs.com/amontgom/312963  
 #Practical Machine Learning Course Project
 ******
 
