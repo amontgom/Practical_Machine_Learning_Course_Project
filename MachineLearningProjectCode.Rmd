@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ******
-http://rpubs.com/amontgom/312963
+http://rpubs.com/amontgom/312963  
 #Practical Machine Learning Course Project
 ******
 
